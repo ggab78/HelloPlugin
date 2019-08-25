@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC
+  "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+
+	<ui:composition>
+
+		<div class="container" ng-app="todoApp" ng-controller="TodoListController as todoList">
+      <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+      [ <a href="" ng-click="todoList.archive()">archive</a> ]
+      <ul class="unstyled">
+        <li ng-repeat="todo in todoList.todos">
+          <label class="checkbox">
+            <input type="checkbox" ng-model="todo.done"></input>
+            <span class="done-{{todo.done}}">{{todo.text}}</span>
+          </label>
+        </li>
+      </ul>
+      <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.todoText" size="30" placeholder="add new todo here"></input>
+        <input class="btn-primary" type="submit" value="add"></input>
+      </form>
+	</div>
+
+		<script
+			src="#{plugins.requestContextPath}/plugin/helloPlugin/ui/js/angular.min.js"></script>
+		<script
+			src="#{plugins.requestContextPath}/plugin/helloPlugin/ui/js/ui-bootstrap.min.js"></script>
+			<script src="#{plugins.requestContextPath}/plugin/helloPlugin/ui/js/todo.js"></script>
+		<link rel="stylesheet"
+			href="#{plugins.requestContextPath}/plugin/helloPlugin/ui/css/hello.css"></link>
+	</ui:composition>
+
+</body>
+</html>
+
+
+
